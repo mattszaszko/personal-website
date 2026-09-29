@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 import { AppIconTile } from "@/components/apps/AppIcon";
+import { openMobileAppFromGesture } from "@/lib/openMobileAppFromGesture";
 import { useOSStore } from "@/stores/useOSStore";
 import { DOCK_APP_IDS, APP_META } from "@/types/os";
 
 export default function MobileDock() {
-  const openMobileApp = useOSStore((s) => s.openMobileApp);
   const activeMobileApp = useOSStore((s) => s.activeMobileApp);
 
   return (
@@ -17,7 +17,7 @@ export default function MobileDock() {
             key={id}
             type="button"
             whileTap={{ scale: 0.9 }}
-            onClick={() => openMobileApp(id)}
+            onClick={() => openMobileAppFromGesture(id)}
             className={`flex flex-col items-center gap-1 rounded-xl p-1 ${
               activeMobileApp === id ? "opacity-100" : "opacity-90"
             }`}

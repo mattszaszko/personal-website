@@ -3,11 +3,10 @@
 import { motion } from "framer-motion";
 import { AppIconTile } from "@/components/apps/AppIcon";
 import { useIconLabelClass } from "@/hooks/useIconLabelClass";
-import { useOSStore } from "@/stores/useOSStore";
+import { openMobileAppFromGesture } from "@/lib/openMobileAppFromGesture";
 import { MOBILE_APP_IDS, APP_META } from "@/types/os";
 
 export default function MobileHomeScreen() {
-  const openMobileApp = useOSStore((s) => s.openMobileApp);
   const { labelClass } = useIconLabelClass();
 
   return (
@@ -18,7 +17,7 @@ export default function MobileHomeScreen() {
             key={id}
             type="button"
             whileTap={{ scale: 0.88 }}
-            onClick={() => openMobileApp(id)}
+            onClick={() => openMobileAppFromGesture(id)}
             className="flex flex-col items-center gap-2"
           >
             <AppIconTile appId={id} className="h-16 w-16" iconSize={32} />

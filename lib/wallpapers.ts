@@ -25,13 +25,13 @@ export const WALLPAPERS: Wallpaper[] = [
   {
     id: "minimal1",
     name: "Minimal 1",
-    src: "/wallpapers/minimal1.png",
+    src: "/wallpapers/minimal1.jpg",
     tone: "bright",
   },
   {
     id: "mountains",
     name: "Mountains",
-    src: "/wallpapers/mountains.png",
+    src: "/wallpapers/mountains.jpg",
     tone: "bright",
   },
 ];

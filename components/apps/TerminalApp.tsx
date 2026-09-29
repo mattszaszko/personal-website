@@ -6,6 +6,8 @@ import {
   useRef,
   useState,
 } from "react";
+import { useResponsiveOS } from "@/hooks/useResponsiveOS";
+import { TERMINAL_INPUT_ID } from "@/lib/openMobileAppFromGesture";
 import { useOSStore } from "@/stores/useOSStore";
 
 type Line = { text: string; tone?: "muted" | "accent" | "error" | "default" };
@@ -86,16 +88,16 @@ export default function TerminalApp() {
   const [showCursor, setShowCursor] = useState(true);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { isMobileLayout } = useResponsiveOS();
 
   const openWindow = useOSStore((s) => s.openWindow);
   const startScreensaver = useOSStore((s) => s.startScreensaver);
   const isTerminalTop = useOSStore((s) => {
     const win = s.windows.terminal;
+    const mobileOpen = s.activeMobileApp === "terminal";
     return (
       !s.isScreensaverActive &&
-      win.isOpen &&
-      !win.isMinimized &&
-      win.zIndex === s.topZ
+      ((win.isOpen && !win.isMinimized && win.zIndex === s.topZ) || mobileOpen)
     );
   });
 
@@ -119,8 +121,11 @@ export default function TerminalApp() {
 
     focusInput();
 
+    // Desktop: keep focus captured. Mobile: don't fight the OS keyboard
+    // (blur→refocus dismisses it / blocks typing).
+    if (isMobileLayout) return;
+
     const onBlur = () => {
-      // Keep keyboard capture while this window stays on top
       requestAnimationFrame(() => {
         const stillTop = (() => {
           const s = useOSStore.getState();
@@ -138,7 +143,7 @@ export default function TerminalApp() {
 
     el.addEventListener("blur", onBlur);
     return () => el.removeEventListener("blur", onBlur);
-  }, [isTerminalTop, lines]);
+  }, [isTerminalTop, isMobileLayout, lines]);
 
   const runCommand = (raw: string) => {
     const trimmed = raw.trim();
@@ -243,6 +248,7 @@ export default function TerminalApp() {
           <span className="shrink-0 text-[#79c0ff]">%</span>
           <div className="relative min-w-0 flex-1 self-stretch">
             <input
+              id={TERMINAL_INPUT_ID}
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -250,6 +256,9 @@ export default function TerminalApp() {
               spellCheck={false}
               autoComplete="off"
               autoCapitalize="off"
+              autoCorrect="off"
+              inputMode="text"
+              enterKeyHint="go"
               aria-label="Terminal input"
             />
             <span
