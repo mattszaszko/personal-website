@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { Folder } from "lucide-react";
+import FadeImage from "@/components/ui/FadeImage";
 import { useResponsiveOS } from "@/hooks/useResponsiveOS";
 import { PROJECTS } from "@/lib/projects";
 import { useOSStore } from "@/stores/useOSStore";
@@ -48,14 +48,14 @@ export default function ProjectsApp() {
               className="group flex flex-col gap-2 rounded-lg p-2 text-left transition outline-none hover:bg-[var(--os-surface)] focus-visible:ring-2 focus-visible:ring-[var(--os-accent)]"
             >
               <div className="relative aspect-[8/5] w-full overflow-hidden rounded-md bg-[var(--os-surface)] shadow-sm ring-1 ring-[var(--os-border)]">
-                <Image
+                <FadeImage
                   src={project.thumbnail}
                   alt={project.name}
                   width={PREVIEW_WIDTH}
                   height={PREVIEW_HEIGHT}
-                  quality={50}
+                  quality={75}
                   sizes={`${PREVIEW_WIDTH}px`}
-                  className="h-full w-full object-cover object-top transition duration-200 group-hover:scale-[1.02]"
+                  className="h-full w-full object-cover object-top transition-transform duration-200 group-hover:scale-[1.02]"
                 />
               </div>
               <div className="min-w-0 px-0.5">

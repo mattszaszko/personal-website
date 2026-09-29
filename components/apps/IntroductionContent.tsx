@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import FadeImage from "@/components/ui/FadeImage";
 
 export const INTRO_TIPS = [
   "Click or tap the icons to open apps and explore.",
@@ -24,7 +24,7 @@ export default function IntroductionContent({
         <div className="relative z-[1] flex items-center gap-4">
           <div className="intro-avatar relative h-24 w-24 shrink-0 rounded-full p-[3px] shadow-lg sm:h-28 sm:w-28">
             <div className="intro-avatar-bg relative h-full w-full overflow-hidden rounded-full">
-              <Image
+              <FadeImage
                 src="/profile/profilepic.png"
                 alt="Matt Szaszko"
                 fill

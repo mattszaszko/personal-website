@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { Check, Folder } from "lucide-react";
+import FadeImage from "@/components/ui/FadeImage";
 import { useResponsiveOS } from "@/hooks/useResponsiveOS";
 import { WALLPAPERS } from "@/lib/wallpapers";
 import { useOSStore } from "@/stores/useOSStore";
@@ -53,12 +53,12 @@ export default function WallpapersApp() {
                 }`}
               >
                 <div className="relative aspect-[8/5] w-full overflow-hidden rounded-md bg-[var(--os-surface)] shadow-sm ring-1 ring-[var(--os-border)]">
-                  <Image
+                  <FadeImage
                     src={wallpaper.src}
                     alt={wallpaper.name}
                     width={PREVIEW_WIDTH}
                     height={PREVIEW_HEIGHT}
-                    quality={40}
+                    quality={75}
                     sizes={`${PREVIEW_WIDTH}px`}
                     className="h-full w-full object-cover"
                   />

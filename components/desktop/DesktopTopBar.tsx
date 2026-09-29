@@ -25,10 +25,8 @@ function useAmsterdamClock() {
 }
 
 export default function DesktopTopBar() {
-  const language = useOSStore((s) => s.language);
   const theme = useOSStore((s) => s.theme);
   const isMobilePreviewForced = useOSStore((s) => s.isMobilePreviewForced);
-  const toggleLanguage = useOSStore((s) => s.toggleLanguage);
   const toggleTheme = useOSStore((s) => s.toggleTheme);
   const toggleMobilePreview = useOSStore((s) => s.toggleMobilePreview);
   const time = useAmsterdamClock();
@@ -37,14 +35,6 @@ export default function DesktopTopBar() {
     <header className="absolute inset-x-0 top-0 z-[1100] flex h-9 items-center justify-between bg-[var(--os-topbar)] px-4 text-xs font-medium text-[var(--os-topbar-text)] backdrop-blur-xl">
       <div className="flex items-center gap-3">
         <span className="font-semibold tracking-tight">Portfolio OS</span>
-        <button
-          type="button"
-          onClick={toggleLanguage}
-          className="rounded px-1.5 py-0.5 transition hover:bg-white/15"
-          aria-label="Toggle language"
-        >
-          {language}
-        </button>
       </div>
 
       <button

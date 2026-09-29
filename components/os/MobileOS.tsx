@@ -20,7 +20,7 @@ export default function MobileOS() {
       : null;
 
   return (
-    <div className="relative flex h-full w-full flex-col overflow-hidden bg-transparent">
+    <div className="absolute inset-0 flex flex-col overflow-hidden bg-transparent">
       <MobileStatusBar />
       <div className="relative min-h-0 flex-1">
         <MobileHomeScreen />

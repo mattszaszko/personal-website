@@ -17,7 +17,7 @@ export default function DesktopOS() {
   const isScreensaverActive = useOSStore((s) => s.isScreensaverActive);
 
   return (
-    <div className="relative h-full w-full">
+    <div className="absolute inset-0">
       <DesktopTopBar />
       <DesktopGrid />
       <DesktopStickyNote />

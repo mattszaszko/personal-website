@@ -62,7 +62,7 @@
 }
 
 body {
-  background: #000;
+  background: #1e293b;
   color: var(--foreground);
   font-family: var(--font-outfit), system-ui, sans-serif;
   scrollbar-width: thin;
@@ -130,6 +130,41 @@ body {
   background-clip: padding-box;
 }
 
+.os-wallpaper-surface {
+  background-color: #1e293b;
+}
+
+.os-wallpaper-layer {
+  background-color: #1e293b;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  filter: blur(0px);
+  transform: scale(1);
+  transition:
+    opacity 200ms ease-in-out,
+    filter 200ms ease-in-out,
+    transform 200ms ease-in-out;
+}
+
+.os-wallpaper-layer.is-blurred {
+  opacity: 0;
+  filter: blur(18px);
+  transform: scale(1.03);
+}
+
+.os-wallpaper-tint {
+  pointer-events: none;
+  background: var(--wallpaper-tint, transparent);
+}
+
+[data-theme="dark"]
+  .os-wallpaper-surface[data-wallpaper-tone="bright"]
+  .os-wallpaper-tint {
+  background: var(--wallpaper-tint-bright);
+}
+
 .os-wallpaper {
   background-color: #1e293b;
   background-image: var(--wallpaper-image);
@@ -147,7 +182,6 @@ body {
   background: var(--wallpaper-tint, transparent);
 }
 
-/* Apply dark tint only to wallpapers marked bright */
 [data-theme="dark"] .os-wallpaper[data-wallpaper-tone="bright"]::before {
   background: var(--wallpaper-tint-bright);
 }
@@ -155,6 +189,8 @@ body {
 .os-wallpaper > * {
   position: relative;
   z-index: 1;
+  height: 100%;
+  width: 100%;
 }
 
 .sticky-note {
@@ -246,7 +282,27 @@ body {
   );
 }
 
-/* Classic Mac-style boot progress */
+@keyframes image-shimmer-shift {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.image-shimmer {
+  background-color: color-mix(in srgb, var(--os-muted) 12%, var(--os-surface));
+  background-image: linear-gradient(
+    105deg,
+    transparent 35%,
+    color-mix(in srgb, var(--os-text) 6%, transparent) 50%,
+    transparent 65%
+  );
+  background-size: 200% 100%;
+  animation: image-shimmer-shift 1.35s ease-in-out infinite;
+}
+
 .boot-progress {
   width: 148px;
   height: 6px;

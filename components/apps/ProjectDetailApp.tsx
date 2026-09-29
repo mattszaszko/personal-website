@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import FadeImage from "@/components/ui/FadeImage";
 import { useResponsiveOS } from "@/hooks/useResponsiveOS";
 import {
   PROJECT_SECTIONS,
@@ -197,13 +197,14 @@ export default function ProjectDetailApp({ projectId }: ProjectDetailAppProps) {
                 </div>
                 {id === "solution" && project.solutionMedia ? (
                   <div className="relative mt-5 overflow-hidden rounded-xl border border-[var(--os-border)] bg-[var(--os-surface)] shadow-sm">
-                    <Image
+                    <FadeImage
                       src={project.solutionMedia.src}
                       alt={project.solutionMedia.alt}
                       width={1280}
                       height={800}
                       unoptimized
                       className="block h-auto w-full"
+                      fadeDurationMs={500}
                     />
                   </div>
                 ) : null}

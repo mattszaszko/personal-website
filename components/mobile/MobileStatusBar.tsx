@@ -26,8 +26,6 @@ function useAmsterdamClock() {
 }
 
 export default function MobileStatusBar() {
-  const language = useOSStore((s) => s.language);
-  const toggleLanguage = useOSStore((s) => s.toggleLanguage);
   const theme = useOSStore((s) => s.theme);
   const toggleTheme = useOSStore((s) => s.toggleTheme);
   const time = useAmsterdamClock();
@@ -39,13 +37,6 @@ export default function MobileStatusBar() {
     >
       <time className="tabular-nums">{time}</time>
       <div className="flex items-center gap-2">
-        <button
-          type="button"
-          onClick={toggleLanguage}
-          className="rounded-full bg-[var(--os-surface)] px-2 py-0.5 text-[10px] font-bold text-[var(--os-muted)]"
-        >
-          {language}
-        </button>
         <button
           type="button"
           onClick={toggleTheme}
