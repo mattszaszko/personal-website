@@ -2,6 +2,7 @@
 
 import type { CSSProperties, ReactNode } from "react";
 import { X } from "lucide-react";
+import { withBasePath } from "@/lib/basePath";
 import { getWallpaperById } from "@/lib/wallpapers";
 import { useOSStore } from "@/stores/useOSStore";
 
@@ -15,7 +16,7 @@ export default function PhoneMockupFrame({ children }: PhoneMockupFrameProps) {
   const wallpaper = getWallpaperById(wallpaperId);
 
   const wallpaperStyle = {
-    "--wallpaper-image": `url('${wallpaper.src}')`,
+    "--wallpaper-image": `url('${withBasePath(wallpaper.src)}')`,
   } as CSSProperties;
 
   return (

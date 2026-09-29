@@ -9,6 +9,7 @@ import {
 } from "react";
 import { prefetchCalEmbed } from "@/components/apps/CalBookingEmbed";
 import { useResponsiveOS } from "@/hooks/useResponsiveOS";
+import { withBasePath } from "@/lib/basePath";
 import { getRandomWallpaperId, getWallpaperById } from "@/lib/wallpapers";
 import { useOSStore } from "@/stores/useOSStore";
 import DesktopOS from "./DesktopOS";
@@ -26,7 +27,7 @@ function WallpaperShell({
   const wallpaper = getWallpaperById(wallpaperId);
 
   const style = {
-    "--wallpaper-image": `url('${wallpaper.src}')`,
+    "--wallpaper-image": `url('${withBasePath(wallpaper.src)}')`,
   } as CSSProperties;
 
   return (

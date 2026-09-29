@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import NextImage, { type ImageProps } from "next/image";
+import { withBasePath } from "@/lib/basePath";
 
 type FadeImageProps = Omit<ImageProps, "onLoad"> & {
   /** Fade-in duration after the image has loaded */
@@ -17,11 +18,16 @@ export default function FadeImage({
   alt,
   style,
   fill,
+  src,
   ...props
 }: FadeImageProps) {
+  const resolvedSrc =
+    typeof src === "string" ? withBasePath(src) : src;
   const [loaded, setLoaded] = useState(false);
   const srcKey =
-    typeof props.src === "string" ? props.src : JSON.stringify(props.src);
+    typeof resolvedSrc === "string"
+      ? resolvedSrc
+      : JSON.stringify(resolvedSrc);
 
   useEffect(() => {
     setLoaded(false);
@@ -44,6 +50,7 @@ export default function FadeImage({
       />
       <NextImage
         {...props}
+        src={resolvedSrc}
         fill={fill}
         alt={alt}
         onLoad={() => setLoaded(true)}

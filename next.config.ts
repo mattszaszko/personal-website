@@ -1,21 +1,18 @@
 import type { NextConfig } from "next";
 
-/** Set in GitHub Actions when deploying to project Pages */
-const isGithubPages = process.env.GITHUB_PAGES === "true";
-const repoName = "personal-website";
-
+/**
+ * Custom domain (www.mattszaszko.com) serves this Pages site at the root,
+ * so no basePath / assetPrefix is needed.
+ */
 const nextConfig: NextConfig = {
   output: "export",
   images: {
     unoptimized: true,
   },
   trailingSlash: true,
-  ...(isGithubPages
-    ? {
-        basePath: `/${repoName}`,
-        assetPrefix: `/${repoName}/`,
-      }
-    : {}),
+  env: {
+    NEXT_PUBLIC_BASE_PATH: "",
+  },
 };
 
 export default nextConfig;

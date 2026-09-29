@@ -1,3 +1,5 @@
+import { withBasePath } from "@/lib/basePath";
+
 export interface ExperienceRole {
   title: string;
   company: string;
@@ -154,5 +156,5 @@ export const WHOAMI_SECTIONS = [
   { id: "fun", label: "Fun" },
 ] as const;
 
-export const CV_DOWNLOAD_HREF = "/cv/Matt-Szaszko-CV.pdf";
+export const CV_DOWNLOAD_HREF = withBasePath("/cv/Matt-Szaszko-CV.pdf");
 export const CV_DOWNLOAD_FILENAME = "Matt-Szaszko-CV.pdf";
