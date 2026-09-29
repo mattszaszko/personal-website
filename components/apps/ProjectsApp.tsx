@@ -1,0 +1,73 @@
+"use client";
+
+import Image from "next/image";
+import { Folder } from "lucide-react";
+import { useResponsiveOS } from "@/hooks/useResponsiveOS";
+import { PROJECTS } from "@/lib/projects";
+import { useOSStore } from "@/stores/useOSStore";
+
+const PREVIEW_WIDTH = 240;
+const PREVIEW_HEIGHT = 150;
+
+export default function ProjectsApp() {
+  const openProjectWindow = useOSStore((s) => s.openProjectWindow);
+  const openMobileProject = useOSStore((s) => s.openMobileProject);
+  const { isMobileLayout } = useResponsiveOS();
+
+  const openProject = (projectId: string) => {
+    if (isMobileLayout) {
+      openMobileProject(projectId);
+      return;
+    }
+    openProjectWindow(projectId);
+  };
+
+  return (
+    <div className="flex h-full min-h-0 flex-col bg-[var(--os-window)] text-[var(--os-text)]">
+      <div className="flex shrink-0 items-center gap-2 border-b border-[var(--os-border)] bg-[var(--os-titlebar)] px-3 py-2">
+        <Folder size={14} className="text-[var(--os-accent)]" />
+        <p className="text-xs font-medium tracking-wide text-[var(--os-muted)]">
+          projects
+        </p>
+        <span className="text-xs text-[var(--os-muted)]/70">
+          {PROJECTS.length} {PROJECTS.length === 1 ? "item" : "items"}
+        </span>
+      </div>
+
+      <div className="min-h-0 flex-1 overflow-auto p-4">
+        <div
+          className={`grid grid-cols-2 gap-4 ${
+            isMobileLayout ? "" : "sm:grid-cols-3"
+          }`}
+        >
+          {PROJECTS.map((project) => (
+            <button
+              key={project.id}
+              type="button"
+              onClick={() => openProject(project.id)}
+              className="group flex flex-col gap-2 rounded-lg p-2 text-left transition outline-none hover:bg-[var(--os-surface)] focus-visible:ring-2 focus-visible:ring-[var(--os-accent)]"
+            >
+              <div className="relative aspect-[8/5] w-full overflow-hidden rounded-md bg-[var(--os-surface)] shadow-sm ring-1 ring-[var(--os-border)]">
+                <Image
+                  src={project.thumbnail}
+                  alt={project.name}
+                  width={PREVIEW_WIDTH}
+                  height={PREVIEW_HEIGHT}
+                  quality={50}
+                  sizes={`${PREVIEW_WIDTH}px`}
+                  className="h-full w-full object-cover object-top transition duration-200 group-hover:scale-[1.02]"
+                />
+              </div>
+              <div className="min-w-0 px-0.5">
+                <p className="truncate text-xs font-medium">{project.name}</p>
+                <p className="truncate text-[10px] text-[var(--os-muted)]">
+                  {project.subtitle}
+                </p>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
