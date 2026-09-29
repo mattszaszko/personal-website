@@ -18,8 +18,9 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio OS",
-  description: "A dual-OS personal portfolio experience",
+  title: "Matt Szaszko",
+  description:
+    "Sales / Solutions Engineer — portfolio, projects, and ways to get in touch.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
