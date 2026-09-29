@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Caveat, JetBrains_Mono, Outfit } from "next/font/google";
+import { Caveat, IBM_Plex_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains",
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 const caveat = Caveat({
@@ -28,7 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-theme="light"
-      className={`${outfit.variable} ${jetbrainsMono.variable} ${caveat.variable} h-full antialiased`}
+      className={`${plusJakarta.variable} ${ibmPlexMono.variable} ${caveat.variable} h-full antialiased`}
     >
       <body className="min-h-full overflow-hidden font-sans">{children}</body>
     </html>

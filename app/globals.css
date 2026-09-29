@@ -57,14 +57,14 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-outfit);
-  --font-mono: var(--font-jetbrains);
+  --font-sans: var(--font-plus-jakarta);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
 body {
   background: #1e293b;
   color: var(--foreground);
-  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
   scrollbar-width: thin;
   scrollbar-color: var(--os-scrollbar-thumb) var(--os-scrollbar-track);
 }
