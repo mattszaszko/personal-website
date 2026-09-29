@@ -34,7 +34,7 @@ export default function DesktopTopBar() {
   return (
     <header className="absolute inset-x-0 top-0 z-[1100] flex h-9 items-center justify-between bg-[var(--os-topbar)] px-4 text-xs font-medium text-[var(--os-topbar-text)] backdrop-blur-xl">
       <div className="flex items-center gap-3">
-        <span className="font-semibold tracking-tight">Portfolio OS</span>
+        <span className="font-semibold tracking-tight">Matt Szaszko</span>
       </div>
 
       <button

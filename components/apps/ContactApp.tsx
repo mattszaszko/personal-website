@@ -36,8 +36,10 @@ export default function ContactApp() {
 
   return (
     <div
-      className={`flex h-full min-h-0 gap-4 overflow-y-auto p-5 ${
-        isMobileLayout ? "flex-col" : "flex-col md:flex-row md:gap-5"
+      className={`flex h-full min-h-0 gap-4 p-5 ${
+        isMobileLayout
+          ? "flex-col overflow-y-auto"
+          : "flex-col overflow-hidden md:flex-row md:gap-5"
       }`}
     >
       <aside
@@ -82,8 +84,8 @@ export default function ContactApp() {
       </aside>
 
       <section
-        className={`flex min-w-0 flex-1 flex-col rounded-xl border border-[var(--os-border)] bg-[var(--os-surface)] p-3 ${
-          isMobileLayout ? "" : "md:p-4"
+        className={`flex min-h-[420px] min-w-0 flex-1 flex-col overflow-hidden rounded-xl border border-[var(--os-border)] bg-[var(--os-surface)] p-3 ${
+          isMobileLayout ? "" : "md:min-h-0 md:p-4"
         }`}
       >
         <h2 className="shrink-0 font-medium text-[var(--os-text)]">

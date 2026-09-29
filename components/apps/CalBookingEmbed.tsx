@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useOSStore } from "@/stores/useOSStore";
 import type { Theme } from "@/types/os";
@@ -8,9 +8,6 @@ import type { Theme } from "@/types/os";
 export const CAL_NAMESPACE = "intro-chat";
 export const CAL_LINK = "matt-szaszko-k6ggpc/intro-chat";
 export const CAL_ORIGIN = "https://app.cal.com";
-
-/** Month view + event details: tall enough that dates aren't clipped */
-const CAL_MIN_HEIGHT = 760;
 
 const CSS_VARS = {
   light: {
@@ -61,8 +58,6 @@ function applyCalTheme(theme: Theme) {
 export default function CalBookingEmbed() {
   const theme = useOSStore((s) => s.theme);
   const [ready, setReady] = useState(false);
-  const [height, setHeight] = useState(CAL_MIN_HEIGHT);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     void applyCalTheme(theme);
@@ -97,68 +92,8 @@ export default function CalBookingEmbed() {
     };
   }, []);
 
-  // Follow Cal iframe's reported height so the month grid is never clipped
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const syncHeight = () => {
-      const iframe = el.querySelector("iframe");
-      const iframeHeight = iframe
-        ? Math.ceil(iframe.getBoundingClientRect().height)
-        : 0;
-      // Also read explicit height attr Cal sets via postMessage resize
-      const attrHeight = iframe
-        ? Number.parseInt(iframe.getAttribute("height") || "", 10)
-        : 0;
-      const styleHeight = iframe?.style.height
-        ? Number.parseInt(iframe.style.height, 10)
-        : 0;
-      const next = Math.max(
-        CAL_MIN_HEIGHT,
-        iframeHeight,
-        Number.isFinite(attrHeight) ? attrHeight : 0,
-        Number.isFinite(styleHeight) ? styleHeight : 0,
-      );
-      setHeight((prev) => (prev === next ? prev : next));
-    };
-
-    syncHeight();
-
-    const resizeObserver = new ResizeObserver(syncHeight);
-    resizeObserver.observe(el);
-    const iframe = el.querySelector("iframe");
-    if (iframe) resizeObserver.observe(iframe);
-
-    const mutationObserver = new MutationObserver(() => {
-      const frame = el.querySelector("iframe");
-      if (frame) resizeObserver.observe(frame);
-      syncHeight();
-    });
-    mutationObserver.observe(el, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ["style", "height"],
-    });
-
-    window.addEventListener("message", syncHeight);
-    const interval = window.setInterval(syncHeight, 800);
-
-    return () => {
-      resizeObserver.disconnect();
-      mutationObserver.disconnect();
-      window.removeEventListener("message", syncHeight);
-      window.clearInterval(interval);
-    };
-  }, [ready]);
-
   return (
-    <div
-      ref={containerRef}
-      className="relative w-full overflow-visible rounded-lg"
-      style={{ height, minHeight: CAL_MIN_HEIGHT }}
-    >
+    <div className="cal-embed-host relative min-h-0 w-full flex-1 overflow-hidden rounded-lg">
       {!ready ? (
         <div
           className="absolute inset-0 z-10 flex flex-col gap-3 bg-[var(--os-surface)] p-4"
@@ -177,7 +112,7 @@ export default function CalBookingEmbed() {
         style={{
           width: "100%",
           height: "100%",
-          overflow: "visible",
+          overflow: "auto",
         }}
         config={{
           layout: "month_view",
