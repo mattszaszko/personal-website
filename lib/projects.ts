@@ -29,6 +29,26 @@ export const PROJECT_SECTIONS: ProjectSection[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "loo-locator",
+    name: "Loo Locator",
+    subtitle: "Driver toilet map (PWA)",
+    thumbnail: "/projects/loo-locator/thumbnail.jpg",
+    problem: [
+      "Going to the toilet when a delivery driver is on a tightly packed shift is challenging. This is doubly so in the summer. Delivery platforms promote heavily that drivers should hydrate. However, they make no accommodations so that drivers can also dehydrate (i.e. go to the toilet). And so, Loo Locator was born.",
+    ],
+    solution: [
+      "I built a progressive web app (PWA) based on a Firebase backend and using Leaflet for map rendering. Delivery drivers can upload photos of portable toilets they find during their day-to-day work. The app extracts the location from the images and puts the toilets on a map. Drivers can quickly navigate to the nearest reported toilet using Google Maps.",
+      "The plan was to sell this as an API product for delivery platforms (like Uber Eats, Picnic, Thuisbezorgd, AH Delivery, and others) so that they can integrate the data into their internal apps and thus provide an easy way for their drivers to find toilets while they work.",
+    ],
+    solutionMedia: {
+      src: "/projects/loo-locator/demo.gif",
+      alt: "Loo Locator app demo showing toilet locations on a map",
+    },
+    results: [
+      "A small pilot was conducted with delivery drivers in the Utrecht region. Initial enthusiasm was high from the user side, but delivery platforms were not interested in improving access to toilets for their employees, so I shelved the project.",
+    ],
+  },
+  {
     id: "urban-noise-measurement",
     name: "Urban Noise Measurement",
     subtitle: "Reporting dashboard",
