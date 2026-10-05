@@ -17,6 +17,8 @@ export interface Project {
   solutionMedia?: {
     src: string;
     alt: string;
+    /** Portrait phone captures stay narrow; landscape demos stay full-width */
+    layout?: "wide" | "phone";
   };
   results: string[];
 }
@@ -43,6 +45,7 @@ export const PROJECTS: Project[] = [
     solutionMedia: {
       src: "/projects/loo-locator/demo.gif",
       alt: "Loo Locator app demo showing toilet locations on a map",
+      layout: "phone",
     },
     results: [
       "A small pilot was conducted with delivery drivers in the Utrecht region. Initial enthusiasm was high from the user side, but delivery platforms were not interested in improving access to toilets for their employees, so I shelved the project.",
