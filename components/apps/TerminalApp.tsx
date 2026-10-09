@@ -10,12 +10,20 @@ import { useResponsiveOS } from "@/hooks/useResponsiveOS";
 import { TERMINAL_INPUT_ID } from "@/lib/openMobileAppFromGesture";
 import { useOSStore } from "@/stores/useOSStore";
 
-type Line = { text: string; tone?: "muted" | "accent" | "error" | "default" };
+type Line = {
+  text: string;
+  tone?: "muted" | "accent" | "error" | "default";
+  /** When set, the line text renders as a clickable external link */
+  href?: string;
+};
+
+const GITHUB_URL = "https://github.com/mattszaszko";
 
 const HELP_LINES: Line[] = [
   { text: "Available commands:", tone: "accent" },
   { text: "  help       Show this command list", tone: "muted" },
   { text: "  stack      List the tech stack I work with", tone: "muted" },
+  { text: "  github     Show my GitHub profile URL", tone: "muted" },
   { text: "  whoami     Open the Who Am I window", tone: "muted" },
   { text: "  contact    Open the Contact window", tone: "muted" },
   {
@@ -176,6 +184,14 @@ export default function TerminalApp() {
       case "techstack":
         output = STACK_LINES;
         break;
+      case "github":
+      case "gh":
+        output = [
+          { text: "GitHub profile:", tone: "accent" },
+          { text: GITHUB_URL, href: GITHUB_URL, tone: "default" },
+          { text: "" },
+        ];
+        break;
       case "clear":
         setLines([]);
         return;
@@ -238,14 +254,31 @@ export default function TerminalApp() {
         ref={scrollerRef}
         className="terminal-scroll min-h-0 flex-1 overflow-auto px-4 py-3 leading-relaxed"
       >
-        {lines.map((line, i) => (
-          <p
-            key={`${i}-${line.text}`}
-            className={`whitespace-pre-wrap ${toneClass(line.tone)}`}
-          >
-            {line.text || "\u00a0"}
-          </p>
-        ))}
+        {lines.map((line, i) =>
+          line.href ? (
+            <p
+              key={`${i}-${line.text}`}
+              className={`whitespace-pre-wrap ${toneClass(line.tone)}`}
+            >
+              <a
+                href={line.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-[#79c0ff] underline decoration-[#79c0ff]/50 underline-offset-2 transition hover:decoration-[#79c0ff]"
+              >
+                {line.text}
+              </a>
+            </p>
+          ) : (
+            <p
+              key={`${i}-${line.text}`}
+              className={`whitespace-pre-wrap ${toneClass(line.tone)}`}
+            >
+              {line.text || "\u00a0"}
+            </p>
+          ),
+        )}
 
         <form onSubmit={onSubmit} className="mt-1 flex items-center gap-2">
           <span className="shrink-0 text-[#7ee787]">matt@portfolio</span>
@@ -280,9 +313,9 @@ export default function TerminalApp() {
       </div>
       <div className="shrink-0 border-t border-white/10 px-4 py-2 text-[11px] text-[#8b949e]">
         tip: try <span className="text-[#7ee787]">stack</span>,{" "}
-        <span className="text-[#7ee787]">whoami</span>,{" "}
-        <span className="text-[#7ee787]">toasters</span>, or{" "}
-        <span className="text-[#7ee787]">contact</span>
+        <span className="text-[#7ee787]">github</span>,{" "}
+        <span className="text-[#7ee787]">whoami</span>, or{" "}
+        <span className="text-[#7ee787]">toasters</span>
       </div>
     </div>
   );
