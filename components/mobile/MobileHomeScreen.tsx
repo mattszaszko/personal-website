@@ -21,7 +21,7 @@ export default function MobileHomeScreen() {
             className="flex flex-col items-center gap-2"
           >
             <AppIconTile appId={id} className="h-16 w-16" iconSize={32} />
-            <span className={`text-xs font-medium ${labelClass}`}>
+            <span className={`whitespace-nowrap text-center ${labelClass}`}>
               {APP_META[id].title}
             </span>
           </motion.button>

@@ -33,7 +33,12 @@ const STACK_ITEMS = [
   },
   {
     name: "Figma",
-    blurb: "UI design, prototyping, and collaboration with stakeholders",
+    blurb:
+      "UI design and prototyping, including Figma MCP to bridge designs into AI coding workflows",
+  },
+  {
+    name: "Google Stitch",
+    blurb: "AI-assisted UI generation and design exploration from prompts",
   },
   {
     name: "IAM",

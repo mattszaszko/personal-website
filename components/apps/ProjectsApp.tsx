@@ -1,6 +1,6 @@
 "use client";
 
-import { Folder } from "lucide-react";
+import { Folder, Inbox } from "lucide-react";
 import FadeImage from "@/components/ui/FadeImage";
 import { useResponsiveOS } from "@/hooks/useResponsiveOS";
 import { PROJECTS } from "@/lib/projects";
@@ -66,6 +66,39 @@ export default function ProjectsApp() {
               </div>
             </button>
           ))}
+        </div>
+
+        <div
+          className="mt-6 flex flex-col items-center gap-3 border-t border-dashed border-[var(--os-border)] pt-5 text-center"
+          aria-label="More projects coming soon"
+        >
+          <div className="flex items-end gap-2" aria-hidden>
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className="rounded-md border border-dashed border-[var(--os-border)] bg-[var(--os-surface)]/60"
+                style={{
+                  width: `${2.75 - i * 0.2}rem`,
+                  height: `${2.1 - i * 0.15}rem`,
+                  opacity: 1 - i * 0.22,
+                }}
+              />
+            ))}
+            <Inbox
+              size={18}
+              className="mb-0.5 text-[var(--os-muted)]"
+              strokeWidth={1.75}
+            />
+          </div>
+          <div className="max-w-xs space-y-1">
+            <p className="text-xs font-medium text-[var(--os-text)]">
+              Working through the backlog
+            </p>
+            <p className="text-[11px] leading-relaxed text-[var(--os-muted)]">
+              More projects are queued up and will land here as I write them up
+              and upload the case studies.
+            </p>
+          </div>
         </div>
       </div>
     </div>

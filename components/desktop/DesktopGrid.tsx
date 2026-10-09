@@ -25,14 +25,14 @@ export default function DesktopGrid() {
           onMouseEnter={() => {
             if (id === "contact") void prefetchCalEmbed();
           }}
-          className="group flex w-20 flex-col items-center gap-1.5 rounded-lg p-2 text-center outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+          className="group flex min-w-20 flex-col items-center gap-1.5 rounded-lg p-2 text-center outline-none focus-visible:ring-2 focus-visible:ring-white/50"
         >
           <AppIconTile
             appId={id}
             className="h-14 w-14 shadow-md transition duration-200 group-hover:brightness-110"
             iconSize={28}
           />
-          <span className={`text-xs font-medium ${labelClass}`}>
+          <span className={`whitespace-nowrap text-center ${labelClass}`}>
             {APP_META[id].title}
           </span>
         </motion.button>

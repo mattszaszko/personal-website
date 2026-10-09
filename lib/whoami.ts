@@ -24,22 +24,22 @@ export interface LanguageItem {
 
 export const WHOAMI_PROFILE = {
   name: "Matt Szaszko",
-  title: "Sales Engineer / Solutions Engineer",
+  title: "Product / Design",
   location: "Utrecht, Netherlands",
   summary:
-    "I help businesses solve problems with technology. After a career in product management across three continents, I now partner with teams as a Sales / Solutions Engineer: discovering opportunities, bridging commercial and engineering, and prototyping solutions so you can validate before committing to a full build.",
+    "After a sabbatical I’m continuing my career at the verge of Product and Design. My experience spans three continents, and as a former founder I’m driven by solving problems with technology while delivering value to customers and the business. Combining a background in psychology with experience managing complex technical products—and thoughtful use of AI—I thrive in highly collaborative environments: talking to customers on Monday, design sessions on Tuesday, a board meeting on Wednesday, a development deep dive on Thursday, a launch party on Friday, and shipping to prod on Saturday.",
 };
 
 export const EXPERIENCE: ExperienceRole[] = [
   {
-    title: "Technical Product Owner & Solutions Specialist",
+    title: "Product Owner IAM",
     company: "TOPdesk",
     period: "Jun 2024 - Jun 2025",
     location: "Delft, NL",
     highlights: [
-      "Uncovered €1M+ in customer licensing opportunities",
-      "Led a major IAM rewrite for microservices and SSO",
-      "Aligned commercial strategy with engineering delivery",
+      "Uncovered €1M+ in customer licensing opportunities across enterprise accounts by analyzing system architectures and account usage data",
+      "Led a major IAM system rewrite to deprecate legacy architecture, engineering a modern microservices backend for enterprise SSO and security",
+      "Aligned commercial strategies with engineering delivery, reducing deployment friction for enterprise SaaS clients",
     ],
   },
   {
@@ -48,50 +48,50 @@ export const EXPERIENCE: ExperienceRole[] = [
     period: "Sep 2022 - Nov 2023",
     location: "Noordwijk, NL",
     highlights: [
-      "Integrated SaaS mapping into GIS workflows",
-      "Led technical discovery for B2B infrastructure",
-      "Aligned stakeholders with the European Space Agency (ESA)",
+      "Designed and developed a ConTech mobile app for underground infrastructure compliance reporting; raised €100k from PLNT Leiden and ESA Incubator",
+      "Led end-to-end technical discovery with B2B infrastructure executives to turn manual cable reporting into high-margin software",
+      "Aligned with ESA engineers to validate GNSS positioning accuracy in complex urban environments",
     ],
   },
   {
-    title: "Senior Technical Product Manager",
+    title: "Senior Product Manager - Consumer Experience",
     company: "Zivver",
     period: "May 2021 - Apr 2022",
     location: "Amsterdam, NL",
     highlights: [
-      "Partnered with Sales and Legal on technical pre-sales and $1M+ deals",
-      "Led critical frontend upgrades for legacy browser compatibility",
-      "Ran technical discovery and accessibility workshops",
+      "Complete redesign of the patient authentication and inbox flow while delivering the brand redesign under tight deadlines (1M+ MAUs)",
+      "Led critical frontend upgrades while maintaining legacy browser compatibility for enterprise compliance and 100% platform availability",
+      "Ran technical discovery and accessibility workshops with Koninklijke Visio to overhaul core mobile and web accessibility",
     ],
   },
   {
-    title: "Product Manager & Solutions Lead",
+    title: "Product & Design Person",
     company: "WeTravel",
     period: "Sep 2019 - Sep 2020",
     location: "Amsterdam, NL",
     highlights: [
-      "Architected US tax reporting compliance (TurboTax / Zapier)",
-      "Designed automated risk safeguards mitigating $5.7M in exposure",
+      "As first Product hire, designed and shipped US tax reporting compliance connecting TurboTax and self-serve workflows with Zapier",
+      "Implemented automated risk safeguards that mitigated $5.7M in chargeback exposure and reduced operational overhead by $1.5M during COVID",
     ],
   },
   {
-    title: "Solutions Consultant",
+    title: "Product & Design Person",
     company: "Ex Machina",
     period: "2018 - 2019",
     location: "Amsterdam, NL",
     highlights: [
-      "Pre-sales for ultra-low latency, high-scale video platforms",
-      "Owned uptime/scaling concerns and carried out pen testing",
+      "Platform management and implementation for ultra-low latency, ultra-high-scale interactive video for top-tier media clients globally",
+      "Drove the platform to 100% uptime and 1M+ concurrent users via stress tests, and ran pen testing end-to-end including vendor selection",
     ],
   },
   {
-    title: "AI Product Manager",
+    title: "AI Product Designer",
     company: "Bicycle AI (Y Combinator W17)",
     period: "2017 - 2018",
     location: "San Francisco, CA / Bangalore, IN",
     highlights: [
-      "Fine-tuned conversational ML models",
-      "Technical discovery for customer service teams in the US and India",
+      "Designed and implemented human-in-the-loop conversational AI for chat-based customer service; operationalized internal ML training workflows",
+      "Post-pivot, designed a live interactive quiz game app for India: 500k+ downloads, 60k+ concurrent players, 4.6 Play Store rating",
     ],
   },
   {
@@ -100,8 +100,8 @@ export const EXPERIENCE: ExperienceRole[] = [
     period: "2013 - 2017",
     location: "Budapest, HU / Warwick, UK / Bangalore, IN",
     highlights: [
-      "Internships in pharmaceutical market research",
-      "Nestlé leadership development program (~3 years): Field Sales, Controlling, Trade Marketing",
+      "Interned at pharmaceutical market research and market access companies in Hungary, the UK, and India",
+      "Nestlé leadership development program (~3 years) in Hungary: Field Sales, Controlling, and Trade Marketing",
     ],
   },
 ];
@@ -156,5 +156,7 @@ export const WHOAMI_SECTIONS = [
   { id: "fun", label: "Fun" },
 ] as const;
 
-export const CV_DOWNLOAD_HREF = withBasePath("/cv/Matt-Szaszko-CV.pdf");
-export const CV_DOWNLOAD_FILENAME = "Matt-Szaszko-CV.pdf";
+export const CV_DOWNLOAD_HREF = withBasePath(
+  "/cv/Matt-Szaszko-CV-Product-Designer.pdf",
+);
+export const CV_DOWNLOAD_FILENAME = "Matt-Szaszko-CV-Product-Designer.pdf";

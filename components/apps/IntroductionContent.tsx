@@ -4,7 +4,7 @@ import FadeImage from "@/components/ui/FadeImage";
 
 export const INTRO_TIPS = [
   "Click or tap the icons to open apps and explore.",
-  "Use the dock for Projects, Services, Who Am I, and Contact.",
+  "Use the dock for Projects, Who Am I, and Contact.",
   "Open Terminal and type help. Try toasters or contact.",
   "Swap wallpapers from the Wallpapers folder.",
 ] as const;
@@ -39,7 +39,8 @@ export default function IntroductionContent({
               Welcome to my website 👋
             </h1>
             <p className="mt-1.5 text-sm leading-relaxed text-[var(--os-muted)]">
-              Problem-solving with technology. Prototypes before big budgets.
+              Product &amp; brand design, technology, and prototypes before big
+              budgets.
             </p>
           </div>
         </div>
@@ -47,11 +48,11 @@ export default function IntroductionContent({
 
       <div className="space-y-4 border-t border-[var(--os-border)] px-5 py-5 text-[var(--os-text)]">
         <p className="text-sm leading-relaxed text-[var(--os-muted)]">
-          My name is Matt Szaszko and I help you solve problems for your
-          business with technology. I partner with you to discover promising
-          opportunities and prototype the solution so you can validate before
-          you commit to blowing your budget on a fully fledged development
-          team.
+          My name is Matt Szaszko and I help businesses solve problems through
+          product design, brand design, and technology. I partner with you to
+          shape the experience and identity, then prototype the solution so you
+          can validate before you commit to blowing your budget on a fully
+          fledged development team.
         </p>
         <p className="text-sm font-medium text-[var(--os-text)]">
           Explore by using the icons. Here&apos;s what you can do:

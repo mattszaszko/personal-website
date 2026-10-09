@@ -71,7 +71,6 @@ export const APP_IDS: AppId[] = [...WINDOW_APP_IDS, "toasters"];
 /** Main portfolio apps shown in the dock / mobile home */
 export const DOCK_APP_IDS: AppId[] = [
   "projects",
-  "services",
   "whoami",
   "contact",
 ];
@@ -79,7 +78,6 @@ export const DOCK_APP_IDS: AppId[] = [
 /** Icons shown on the desktop launcher (desktop only extras included) */
 export const DESKTOP_ICON_IDS: AppId[] = [
   "projects",
-  "services",
   "whoami",
   "contact",
   "wallpapers",
@@ -90,7 +88,6 @@ export const DESKTOP_ICON_IDS: AppId[] = [
 /** Apps available on mobile home (no screensaver) */
 export const MOBILE_APP_IDS: AppId[] = [
   "projects",
-  "services",
   "whoami",
   "contact",
   "wallpapers",

@@ -64,7 +64,7 @@ export default function DesktopDock() {
                   />
                 </div>
                 <span
-                  className={`mt-1 max-w-[4.5rem] truncate text-center text-[10px] font-semibold tracking-wide ${dockLabelClass}`}
+                  className={`mt-1 whitespace-nowrap text-center text-[10px] font-semibold tracking-wide ${dockLabelClass}`}
                 >
                   {APP_META[id].title}
                 </span>

@@ -251,6 +251,24 @@ body {
   -webkit-backdrop-filter: blur(24px) saturate(1.35);
 }
 
+.icon-label-chip {
+  display: inline-block;
+  width: max-content;
+  max-width: none;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.55rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  white-space: nowrap;
+  background: var(--os-dock);
+  border: 1px solid var(--os-dock-border);
+  box-shadow: var(--os-dock-shadow);
+  backdrop-filter: blur(24px) saturate(1.35);
+  -webkit-backdrop-filter: blur(24px) saturate(1.35);
+}
+
 .intro-hero-glow {
   background:
     radial-gradient(

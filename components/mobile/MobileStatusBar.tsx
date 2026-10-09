@@ -29,11 +29,11 @@ export default function MobileStatusBar() {
   const theme = useOSStore((s) => s.theme);
   const toggleTheme = useOSStore((s) => s.toggleTheme);
   const time = useAmsterdamClock();
-  const { labelClass } = useIconLabelClass();
+  const { statusClass } = useIconLabelClass();
 
   return (
     <div
-      className={`flex h-11 shrink-0 items-center justify-between px-5 pt-2 text-[11px] font-semibold ${labelClass}`}
+      className={`flex h-11 shrink-0 items-center justify-between px-5 pt-2 text-[11px] font-semibold ${statusClass}`}
     >
       <time className="tabular-nums">{time}</time>
       <div className="flex items-center gap-2">

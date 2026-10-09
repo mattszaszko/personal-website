@@ -56,7 +56,7 @@ export const PROJECTS: Project[] = [
     name: "Urban Noise Measurement",
     subtitle: "Reporting dashboard",
     thumbnail: "/projects/urban-noise-measurement/thumbnail.png",
-    href: "https://noise.mattszaszko.com/",
+    href: "https://noise.mattszaszko.com/demo/tk_9f82b3d7c4e1a06f85d2e3c9b1a4f07e",
     problem: [
       "This passion project came from my volunteering in the Meet Je Stad initiative in Utrecht. Gemeente Utrecht is looking to add noise measurement to their arsenal of indicators about city health.",
     ],
