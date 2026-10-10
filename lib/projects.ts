@@ -11,14 +11,22 @@ export interface Project {
   thumbnail: string;
   /** Optional live demo / product URL */
   href?: string;
+  /** Optional public GitHub repository */
+  githubUrl?: string;
+  /** Technologies shown as badges on the project page */
+  technologies?: string[];
   problem: string[];
   solution: string[];
   /** Optional media shown after the solution paragraphs */
   solutionMedia?: {
+    /** Defaults to image; use embed for Loom / iframe demos */
+    type?: "image" | "embed";
     src: string;
-    alt: string;
+    alt?: string;
     /** Portrait phone captures stay narrow; landscape demos stay full-width */
     layout?: "wide" | "phone";
+    /** Embed only: CSS padding-bottom % for the aspect box (Loom uses 60) */
+    embedAspectPercent?: number;
   };
   results: string[];
 }
@@ -35,6 +43,14 @@ export const PROJECTS: Project[] = [
     name: "Loo Locator",
     subtitle: "Driver toilet map (PWA)",
     thumbnail: "/projects/loo-locator/thumbnail.jpg",
+    githubUrl: "https://github.com/mattszaszko/loo-locator",
+    technologies: [
+      "Cursor",
+      "Flutter",
+      "Firebase",
+      "Flutter Map",
+      "Riverpod",
+    ],
     problem: [
       "Going to the toilet when a delivery driver is on a tightly packed shift is challenging. This is doubly so in the summer. Delivery platforms promote heavily that drivers should hydrate. However, they make no accommodations so that drivers can also dehydrate (i.e. go to the toilet). And so, Loo Locator was born.",
     ],
@@ -55,8 +71,17 @@ export const PROJECTS: Project[] = [
     id: "urban-noise-measurement",
     name: "Urban Noise Measurement",
     subtitle: "Reporting dashboard",
-    thumbnail: "/projects/urban-noise-measurement/thumbnail.png",
+    thumbnail: "/projects/urban-noise-measurement/dashboard.gif",
     href: "https://noise.mattszaszko.com/demo/tk_9f82b3d7c4e1a06f85d2e3c9b1a4f07e",
+    githubUrl: "https://github.com/mattszaszko/urban-sound-collector",
+    technologies: [
+      "Cursor",
+      "Python",
+      "Raspberry Pi",
+      "YAMNet",
+      "TensorFlow Lite",
+      "FastAPI",
+    ],
     problem: [
       "This passion project came from my volunteering in the Meet Je Stad initiative in Utrecht. Gemeente Utrecht is looking to add noise measurement to their arsenal of indicators about city health.",
     ],
@@ -64,8 +89,10 @@ export const PROJECTS: Project[] = [
       "I built an edge computing solution, using Raspberry Pi as the platform to record and classify noise using on-device machine learning, so that no audio leaves the device. This privacy-first approach was crucial during development. The result is comprehensive acoustic and sound type data in real time and historically.",
     ],
     solutionMedia: {
-      src: "/projects/urban-noise-measurement/dashboard.gif",
-      alt: "Urban Noise Measurement reporting dashboard",
+      type: "embed",
+      src: "https://www.loom.com/embed/873629bc1af24a15be3730638e8d49a4",
+      alt: "Urban Noise Measurement Loom walkthrough",
+      embedAspectPercent: 60,
     },
     results: [
       "This project is still in the early stages. Prototypes have been built, testing and data collection is ongoing. The next step is to scale data collection and to unify analytics in a cloud solution that the edge computing devices communicate with.",
@@ -78,6 +105,8 @@ export const PROJECTS: Project[] = [
     subtitle: "Historical motorcycle tours",
     thumbnail: "/projects/way-and-witness/thumbnail.png",
     href: "https://www.wayandwitness.com/witness-tracks.html",
+    githubUrl: "https://github.com/mattszaszko/moto-tour-website",
+    technologies: ["Cursor", "HTML", "CSS", "JavaScript", "NotebookLM"],
     problem: [
       "A business idea I had called Way & Witness for guided historical motorcycle tours needed an online presence. I wanted something scalable as well, so I created a self-guided version too.",
     ],
